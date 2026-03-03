@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Android Test</string>
+    <string name="title_question_exit">Sair?</string>
+    <string name="message_exit">Deseja realmente sair do app?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Nao</string>
+    <string name="go_item_menu">Ir</string>
 </resources>

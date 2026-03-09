@@ -122,48 +122,43 @@ private fun BottomSheetMessageTwoButtonsContent(
             )
             Spacer(modifier = Modifier.height(24.dp))
 
-            Row(
-                modifier = Modifier.fillMaxWidth()
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(48.dp),
+                onClick = onClickBtnMain,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Red,
+                    contentColor = Color.White
+                )
             ) {
+                Text(
+                    text = stringResource(titleBtnMain),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1
+                )
+            }
 
-                Button(
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(48.dp),
-                    onClick = onClickBtnMain,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Red,
-                        contentColor = Color.White
-                    )
-                ) {
-                    Text(
-                        text = stringResource(titleBtnMain),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        maxLines = 1
-                    )
-                }
+            Spacer(modifier = Modifier.height(12.dp))
 
-                Spacer(modifier = Modifier.width(12.dp))
-
-                OutlinedButton(
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(48.dp),
-                    onClick = onDismiss,
-                    border = androidx.compose.foundation.BorderStroke(1.dp, Color.Red),
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        containerColor = Color.White,
-                        contentColor = Color.Red
-                    )
-                ) {
-                    Text(
-                        text = stringResource(titleSecondBtn),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        maxLines = 1
-                    )
-                }
+            OutlinedButton(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(48.dp),
+                onClick = onDismiss,
+                border = androidx.compose.foundation.BorderStroke(1.dp, Color.Red),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = Color.White,
+                    contentColor = Color.Red
+                )
+            ) {
+                Text(
+                    text = stringResource(titleSecondBtn),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1
+                )
             }
 
         }

@@ -6,7 +6,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel<INTENT : Any, STATE : Any>() : ViewModel() {
+abstract class BaseViewModel<INTENT : Any, STATE : Any, EVENT: Any>() : ViewModel() {
 
     protected abstract val initialState : STATE
 
@@ -16,6 +16,9 @@ abstract class BaseViewModel<INTENT : Any, STATE : Any>() : ViewModel() {
     private val intentChannel = Channel<INTENT>(Channel.UNLIMITED)
     val intents = intentChannel.receiveAsFlow()
 
+    private val _events = Channel<EVENT>()
+    val events = _events.receiveAsFlow()
+
     init {
         handleActionIntents()
     }
@@ -23,6 +26,12 @@ abstract class BaseViewModel<INTENT : Any, STATE : Any>() : ViewModel() {
     fun sendActionIntent(intent: INTENT) {
         viewModelScope.launch {
             intentChannel.send(intent)
+        }
+    }
+
+    fun sendEvent(event: EVENT) {
+        viewModelScope.launch {
+            _events.send(event)
         }
     }
 

@@ -15,8 +15,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -33,11 +31,15 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import br.com.androidtest.R
 import br.com.androidtest.domain.models.ItemHome
+import br.com.androidtest.navigation.Routes
 import br.com.androidtest.presentation.home.actions.HomeActionIntent
 import br.com.androidtest.presentation.home.viewmodel.HomeViewModel
 import br.com.androidtest.ui.BottomSheetMessageTwoButtons
 import br.com.androidtest.ui.LaunchOneTime
 import org.koin.androidx.compose.koinViewModel
+
+val ID_ITEM_NEW_PLATFORM = 1
+val ID_ITEM_OLD_PLATFORM = 2
 
 @ExperimentalMaterial3Api
 @Composable
@@ -59,7 +61,19 @@ fun HomeScreen(
         modifier = Modifier.fillMaxSize(),
         listItems = uiState.listItemsHome,
         onClickItem = { itemHome ->
+            when (itemHome.id) {
+                ID_ITEM_NEW_PLATFORM -> {
+                    navController.navigate(
+                        Routes.MyData.createRoute("NP")
+                    )
+                }
 
+                ID_ITEM_OLD_PLATFORM -> {
+                    navController.navigate(
+                        Routes.MyData.createRoute("RW")
+                    )
+                }
+            }
         }
     )
 

@@ -1,5 +1,6 @@
 package br.com.androidtest.presentation.home.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import br.com.androidtest.data.BaseViewModel
 import br.com.androidtest.domain.models.ItemHome
@@ -7,7 +8,9 @@ import br.com.androidtest.presentation.home.actions.HomeActionIntent
 import br.com.androidtest.presentation.home.state.HomeState
 import kotlinx.coroutines.launch
 
-class HomeViewModel : BaseViewModel<HomeActionIntent, HomeState>()  {
+object NoEvent
+
+class HomeViewModel : BaseViewModel<HomeActionIntent, HomeState, NoEvent>()  {
 
     override val initialState: HomeState
         get() = HomeState()
